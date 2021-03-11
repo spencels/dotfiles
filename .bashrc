@@ -74,7 +74,7 @@ set_prompt() {
     blue="\[\033[01;94m\]"
     no_color="\[\033[0m\]"
   fi
-  PS1="${green}${fqdn}${no_color}:${blue}${working_dir}${no_color}\n\$ "
+  PS1="${green}${username}@${fqdn}${no_color}:${blue}${working_dir}${no_color}\n\$ "
 
 }
 set_prompt
