@@ -192,6 +192,7 @@ alias l='ls -CFh'
 alias la='ls -Ah'
 alias ll='ls -alFh'
 alias vimrc="vim ~/.vimrc"
+alias df="df -h"
 
 export EDITOR=vim
 
