@@ -193,6 +193,7 @@ alias la='ls -Ah'
 alias ll='ls -alFh'
 alias vimrc="vim ~/.vimrc"
 alias df="df -h"
+alias mnt="mount | grep /mnt"
 
 export EDITOR=vim
 
