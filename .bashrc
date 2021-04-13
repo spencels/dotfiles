@@ -198,6 +198,6 @@ alias mnt="mount | grep /mnt"
 export EDITOR=vim
 
 # Pick up any local bashrc files.
-for rcfile in "$(ls -a ~/.bashrc-*)"; do
-  . "$rcfile"
-done
+if [[ -f "~/.bashrc-local.sh" ]]; then
+  . "~/.bashrc-local.sh"
+fi
