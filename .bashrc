@@ -130,6 +130,26 @@ fi
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+export SSHKEY="$HOME/.ssh/id_ed25519"
+export PUBKEY="$SSHKEY.pub"
+
+export EDITOR=vim
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias ap=ansible-playbook
+alias bashrc="vim ~/.bashrc && source ~/.bashrc"
+alias count="wc -l"
+alias du-default="/usr/bin/du"
+alias du="/usr/bin/du -d1 -h"
+alias l='ls -CFh'
+alias la='ls -Ah'
+alias ll='ls -alFh'
+alias vimrc="vim ~/.vimrc"
+alias df="df -h"
+alias mnt="mount | grep /mnt"
+
 # Gets the size of specified folder. Defaults to "."
 function foldersize() {
   local folder="${1:-.}"
@@ -180,24 +200,12 @@ EOF
   python3 -c "$kill_script" $@
 }
 
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias ap=ansible-playbook
-alias bashrc="vim ~/.bashrc && source ~/.bashrc"
-alias count="wc -l"
-alias du-default="/usr/bin/du"
-alias du="/usr/bin/du -d1 -h"
-alias l='ls -CFh'
-alias la='ls -Ah'
-alias ll='ls -alFh'
-alias vimrc="vim ~/.vimrc"
-alias df="df -h"
-alias mnt="mount | grep /mnt"
-
-export EDITOR=vim
+function start-ssh-agent {
+  eval `ssh-agent -s`
+  ssh-add $SSHKEY
+}
 
 # Pick up any local bashrc files.
-if [[ -f "~/.bashrc-local.sh" ]]; then
-  . "~/.bashrc-local.sh"
+if [[ -f ~/.bashrc-local.sh ]]; then
+  . ~/.bashrc-local.sh
 fi
